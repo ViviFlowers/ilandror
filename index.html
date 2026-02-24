@@ -3,301 +3,264 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Metal Bloom | אמנות הברזל והצבע</title>
+    <title>פריחת הברזל | Iron Bloom - אומנות נצחית</title>
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --accent-color: #d35400; /* צבע נחושת עמוק */
+            --primary-color: #1a1a1a; /* שחור עמוק מהלוגו */
+            --accent-color: #c5a059; /* זהב/ברונזה מהלוגו */
             --bg-color: #fdfcfb;
+            --whatsapp-green: #25d366;
         }
-.whatsapp-float {
-    position: fixed;
-    width: 60px;
-    height: 60px;
-    bottom: 40px;
-    left: 40px; /* בצד שמאל כדי שלא יסתיר בעברית */
-    background-color: #25d366;
-    color: #FFF;
-    border-radius: 50px;
-    text-align: center;
-    font-size: 30px;
-    box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.3s;
-}
-
-.whatsapp-float:hover {
-    transform: scale(1.1);
-}
-
-.whatsapp-float img {
-    width: 35px;
-    height: 35px;
-}
+        
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
             margin: 0;
             background-color: var(--bg-color);
             color: var(--primary-color);
             line-height: 1.6;
-        }
-
-        header {
-            background: white;
-            padding: 1.5rem;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .hero {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 6rem 2rem;
-            text-align: center;
-            /* תמונת רקע של סדנת אומן או טקסטורת מתכת */
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                        url('https://viviflowers.github.io/ilandror/images/vivi.jfif');
-            background-size: cover;
-            background-position: center;
-            color: white;
-        }
-
-        .hero h1 { font-size: 3.5rem; margin-bottom: 1rem; }
-        .hero p { font-size: 1.4rem; max-width: 700px; }
-
-        .cta-button {
-            background-color: var(--accent-color);
-            color: white;
-            padding: 1.2rem 3rem;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            margin-top: 2rem;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-
-        .cta-button:hover { 
-            background-color: #e67e22;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-
-        .section-title {
-            text-align: center;
-            margin-top: 4rem;
-            font-size: 2.5rem;
-        }
-
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            padding: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            transition: 0.3s;
-        }
-
-        .card:hover { transform: translateY(-10px); }
-
-        .card-img-container {
-            width: 100%;
-            height: 300px;
-            overflow: hidden;
-        }
-
-        .card-img-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* שומר על יחס תמונה וממלא את הריבוע */
-            transition: transform 0.5s ease;
-        }
-
-        .card:hover .card-img-container img {
-            transform: scale(1.1);
-        }
-
-        .card-content {
-            padding: 1.5rem;
             text-align: right;
         }
 
-        .card-content h3 { margin: 0 0 10px 0; color: var(--accent-color); }
-        .price { font-weight: bold; font-size: 1.2rem; color: #27ae60; }
-
-        .contact {
-            background: #f4f4f4;
-            padding: 5rem 2rem;
+        /* כפתור ווטסאפ צף */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            left: 40px;
+            background-color: var(--whatsapp-green);
+            color: #FFF;
+            border-radius: 50px;
             text-align: center;
-        }
-
-        form {
-            max-width: 500px;
-            margin: 2rem auto;
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
             display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s;
         }
+        .whatsapp-float:hover { transform: scale(1.1); }
+        .whatsapp-float img { width: 35px; height: 35px; }
 
-        input, textarea {
+        header {
+            background: white;
             padding: 1rem;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-family: inherit;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: sticky; top: 0; z-index: 1000;
         }
 
-        footer { padding: 3rem; text-align: center; background: #2c3e50; color: white; }
+        .logo-img {
+            max-height: 120px; /* גובה הלוגו בראש האתר */
+            width: auto;
+        }
+
+        .hero {
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            padding: 5rem 2rem; text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('https://viviflowers.github.io/ilandror/images/vivi.jfif');
+            background-size: cover; background-position: center; color: white;
+        }
+
+        .hero h1 { font-size: 3rem; margin-bottom: 1rem; color: var(--accent-color); }
+
+        /* סקשן מעצב הפרחים (Configurator) */
+        .configurator-section { padding: 4rem 1rem; max-width: 1000px; margin: 0 auto; }
+
+        .config-main-container {
+            display: grid; grid-template-columns: 1fr 120px; gap: 20px;
+            background: white; padding: 20px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .base-row { grid-column: 1 / -1; display: flex; justify-content: center; gap: 15px; margin-bottom: 20px; flex-wrap: wrap; }
+
+        .preview-area {
+            display: flex; justify-content: center; align-items: center;
+            border: 1px solid #eee; border-radius: 15px; overflow: hidden; background: #f9f9f9;
+        }
+
+        #main-product-img { width: 100%; max-width: 500px; height: auto; display: block; transition: opacity 0.3s ease; }
+
+        .flower-col { display: flex; flex-direction: column; gap: 10px; justify-content: center; }
+
+        .thumb-btn {
+            border: 2px solid #eee; background: white; cursor: pointer; border-radius: 10px;
+            padding: 5px; transition: 0.3s; display: flex; flex-direction: column; align-items: center; font-size: 0.8rem; width: 90px;
+        }
+
+        .thumb-btn img { width: 60px; height: 60px; object-fit: cover; border-radius: 5px; margin-bottom: 5px; }
+        .thumb-btn.active { border-color: var(--accent-color); background: #fffcf0; }
+
+        /* אלמנטים כלליים */
+        .section-title { text-align: center; margin-top: 3rem; font-size: 2.2rem; color: var(--primary-color); }
+        .about-section { padding: 4rem 2rem; max-width: 850px; margin: 0 auto; text-align: center; line-height: 1.8; }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; padding: 2rem; max-width: 1200px; margin: 0 auto; }
+        .card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+        .card-img-container { width: 100%; height: 300px; overflow: hidden; }
+        .card-img-container img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .cta-button { 
+            background-color: var(--accent-color); color: white; padding: 1.1rem 2.5rem; 
+            text-decoration: none; border-radius: 50px; font-weight: bold; display: inline-block; 
+            margin-top: 20px; border: none; cursor: pointer; transition: 0.3s;
+        }
+        .cta-button:hover { background-color: #a68541; transform: translateY(-2px); }
+
+        .contact { background: #f4f4f4; padding: 5rem 2rem; text-align: center; }
+        form { max-width: 500px; margin: 2rem auto; display: flex; flex-direction: column; gap: 1rem; background: white; padding: 2rem; border-radius: 20px; }
+        input, textarea { padding: 1rem; border: 1px solid #ddd; border-radius: 8px; font-family: inherit; }
+        
+        footer { padding: 3rem; text-align: center; background: var(--primary-color); color: white; }
+
+        @media (max-width: 768px) {
+            .config-main-container { grid-template-columns: 1fr; }
+            .flower-col { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+            .hero h1 { font-size: 2.2rem; }
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <div style="font-size: 1.8rem; font-weight: bold; letter-spacing: 3px; color: var(--accent-color);">METAL BLOOM</div>
+        <!-- הטמעת הלוגו בראש האתר -->
+        <a href="/">
+            <img src="logo.png" alt="פריחת הברזל - Iron Bloom" class="logo-img">
+        </a>
     </header>
 
     <section class="hero">
-        <h1>מחכים שליילה היפה תבחר משפט במקום "יופי נצחי ממתכת"</h1>
-        <p>יצירות אומנות בעבודת יד שמוסיפות צבע וסטייל לכל חלל. פרחים שלעולם לא נובלים.</p>
-        <a href="#contact" class="cta-button">להזמנה אישית מהסטודיו</a>
+        <h1>יופי נצחי בעבודת יד</h1>
+        <p>פרחי מתכת ייחודיים המשלבים עוצמה של ברזל עם עדינות של טבע.</p>
+        <a href="#configurator" class="cta-button">עצבו לכם פריחה אישית</a>
     </section>
 
-    <h2 class="section-title">הקולקציה שלנו</h2>
+    <!-- מעצב הפרחים (Configurator) -->
+    <section class="configurator-section" id="configurator">
+        <h2 class="section-title">הסטודיו האישי שלכם</h2>
+        <p style="text-align: center; margin-bottom: 30px; opacity: 0.8;">בחרו את השילוב המדויק עבורכם וראו את התוצאה</p>
 
+        <div class="config-main-container">
+            <!-- שורת בסיסים -->
+            <div class="base-row" id="base-options"></div>
+
+            <!-- תצוגה מרכזית -->
+            <div class="preview-area">
+                <img id="main-product-img" src="https://viviflowers.github.io/ilandror/CONFIGURATOR/BASE_1_FLOWER_1.jpg" alt="העיצוב הנבחר">
+            </div>
+
+            <!-- עמודת פרחים -->
+            <div class="flower-col" id="flower-options"></div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <h3 id="selection-summary" style="color: var(--accent-color);">הבחירה שלכם: בסיס 1 עם פרח 1</h3>
+            <a id="wa-order-link" href="#" target="_blank" class="cta-button" style="background-color: var(--whatsapp-green);">הזמינו את השילוב הזה בווטסאפ</a>
+        </div>
+    </section>
+
+    <!-- סיפור המותג -->
+    <section class="about-section">
+        <h2 style="color: var(--accent-color);">הסיפור שלנו</h2>
+        <p>
+            בסדנה קטנה, בין רעש הפטיש לניצוצות הריתוך, קורה קסם בכל יום מחדש. ברזל קר, קשיח ותעשייתי הופך תחת ידיו המיומנות של אומן לפרח עדין, צבעוני ומלא חיים. 
+            <br><br>
+            <b>פריחת הברזל</b> נולדה מהרצון להביא לעולם אומנות ישראלית, שורשית ועל-זמנית. אנחנו מאמינים שיופי לא חייב להיות זמני; הפרחים שלנו אינם זקוקים למים ואינם חוששים מהשמש. הם ימשיכו לפרוח אצלכם שנים ארוכות לאחר שנקטפו.
+        </p>
+    </section>
+
+    <h2 class="section-title">מהסדנה של האומן</h2>
     <section class="gallery">
-        <!-- מוצר 1 -->
-        <div class="card">
-            <div class="card-img-container">
-                <img src="https://viviflowers.github.io/ilandror/images/1.jfif" alt="עציץ פרחים קטן">
-            </div>
-            <div class="card-content">
-                <h3>סיגליות</h3>
-                <p>עבודת נפחות עדינה בצביעה בתנור. מתנה מושלמת ליום נישואין.</p>
-                <div class="price">₪160</div>
-            </div>
-        </div>
-
-        <!-- מוצר 2 -->
-        <div class="card">
-            <div class="card-img-container">
-                <img src="https://viviflowers.github.io/ilandror/images/2.jfif" alt="עציץ פרחים קטן">
-            </div>
-            <div class="card-content">
-                <h3>נוריות</h3>
-                <p>קומפוזיציה של 5 פרחים בגבהים שונים. מרכז שולחן מרהיב.</p>
-                <div class="price">₪180</div>
-            </div>
-        </div>
-
-        <!-- מוצר 3 -->
-        <div class="card">
-            <div class="card-img-container">
-                <img src="https://viviflowers.github.io/ilandror/images/5.jfif" alt="עציץ פרחים בינוני">
-            </div>
-            <div class="card-content">
-                <h3>חרציות</h3>
-                <p>יצירה מורכבת עם דגש על טקסטורות ייחודיות של מתכת רקועה.</p>
-                <div class="price">₪210</div>
-            </div>
-        </div>
-
-        <!-- מוצר 4 -->
-        <div class="card">
-            <div class="card-img-container">
-                <img src="https://viviflowers.github.io/ilandror/images/21.jpg" alt="עציץ פרחים בינוני">
-            </div>
-            <div class="card-content">
-                <h3>תהליך העבודה</h3>
-                <p>אומנות ישראלית.</p>
-                <div class="price">₪210</div>
-            </div>
-        </div>
-
-        <!-- מוצר 5 -->
-        <div class="card">
-            <div class="card-img-container">
-                <img src="https://viviflowers.github.io/ilandror/images/23.jpg" alt="עציץ פרחים בינוני">
-            </div>
-            <div class="card-content">
-                <h3>תהליך העבודה</h3>
-                <p>יאומנות ישראלית.</p>
-                <div class="price">₪210</div>
-            </div>
-        </div>
-
-        <!-- מוצר 6 -->
-        <div class="card">
-            <div class="card-img-container">
-                <img src="https://viviflowers.github.io/ilandror/images/24.jpg" alt="עציץ פרחים בינוני">
-            </div>
-            <div class="card-content">
-                <h3>תהליך העבודה</h3>
-                <p>אומנות ישראלית.</p>
-                <div class="price">₪210</div>
-            </div>
-        </div>
-        <!-- מוצר 7--> 
-        <div class="card">
-            <div class="card-img-container">
-                <img src="https://viviflowers.github.io/ilandror/images/3.jfif" alt="עציץ פרחים בינוני">
-            </div>
-            <div class="card-content">
-                <h3>חרציות</h3>
-                <p>יצירה מורכבת עם דגש על טקסטורות ייחודיות של מתכת רקועה.</p>
-                <div class="price">₪210</div>
-            </div>
-        </div>
+        <div class="card"><div class="card-img-container"><img src="https://viviflowers.github.io/ilandror/images/21.jpg" alt="תהליך עבודה"></div></div>
+        <div class="card"><div class="card-img-container"><img src="https://viviflowers.github.io/ilandror/images/23.jpg" alt="צביעה ידנית"></div></div>
+        <div class="card"><div class="card-img-container"><img src="https://viviflowers.github.io/ilandror/images/24.jpg" alt="התוצאה הסופית"></div></div>
     </section>
 
     <section id="contact" class="contact">
-        <h2>הזמנה אישית מהאומן</h2>
-        <p>נשמח לעצב עבורכם פרח או זר בהתאמה אישית של צבעים וגודל.</p>
-        <form>
-            <input type="text" placeholder="שם מלא" required>
-            <input type="tel" placeholder="טלפון ליצירת קשר" required>
-            <textarea placeholder="איזה פרח תרצו שנעצב לכם?" rows="4"></textarea>
-            <button type="submit" class="cta-button" style="border:none; cursor:pointer; width: 100%;">שליחת בקשה</button>
+        <h2>יצירת קשר</h2>
+        <p>מעוניינים בהזמנה מיוחדת או בכמות גדולה? השאירו פרטים:</p>
+        <form action="https://formspree.io/f/YOUR_ID" method="POST">
+            <input type="text" name="name" placeholder="שם מלא" required>
+            <input type="tel" name="phone" placeholder="טלפון ליצירת קשר" required>
+            <textarea name="message" placeholder="איך נוכל לעזור לכם?" rows="4"></textarea>
+            <button type="submit" class="cta-button">שליחת הודעה</button>
         </form>
     </section>
 
     <footer>
-        <p>&copy; 2026 Metal Bloom | נוצר באהבה בסטודיו לאומנות הברזל</p>
-        <p style="font-size: 0.8rem; opacity: 0.7;">כל הפרחים מיוצרים בעבודת יד וצבועים בחומרים עמידים לאורך שנים.</p>
+        <img src="logo.png" alt="פריחת הברזל" style="max-height: 60px; filter: brightness(0) invert(1); margin-bottom: 1rem;">
+        <p>&copy; 2024 פריחת הברזל | Iron Bloom | אומנות נצחית בעבודת יד</p>
     </footer>
-<!-- כפתור ווטסאפ צף -->
-<a href="https://wa.me/972529217936?text=היי%20אני%20מתעניין%20בפרחי%20המתכת" class="whatsapp-float" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-</a>
+
+    <!-- כפתור ווטסאפ צף -->
+    <a href="https://wa.me/972529217936" class="whatsapp-float" id="floating-wa" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    </a>
+
+    <script>
+        const configPath = "https://viviflowers.github.io/ilandror/CONFIGURATOR/";
+        let selectedBase = 1;
+        let selectedFlower = 1;
+
+        // שמות בעברית לתצוגה - ניתן לעדכן בהתאם לצורך
+        const baseNames = ["סלע חולי", "אבן בזלת", "עץ כפרי", "בטון מוחלק", "שיש מעוצב"];
+        const flowerNames = ["כלנית אדומה", "סחלב סגול", "חרצית לבנה", "ורד ורוד", "צבעוני צהוב"];
+
+        function initConfigurator() {
+            const baseContainer = document.getElementById('base-options');
+            const flowerContainer = document.getElementById('flower-options');
+
+            for(let i=1; i<=5; i++) {
+                const btn = document.createElement('button');
+                btn.className = `thumb-btn ${i===1 ? 'active' : ''}`;
+                btn.id = `base-btn-${i}`;
+                btn.onclick = () => selectPart('base', i);
+                btn.innerHTML = `<img src="${configPath}BASE_${i}.jpg" onerror="this.src='https://via.placeholder.com/60?text=BASE+${i}'"><span>${baseNames[i-1]}</span>`;
+                baseContainer.appendChild(btn);
+            }
+
+            for(let i=1; i<=5; i++) {
+                const btn = document.createElement('button');
+                btn.className = `thumb-btn ${i===1 ? 'active' : ''}`;
+                btn.id = `flower-btn-${i}`;
+                btn.onclick = () => selectPart('flower', i);
+                btn.innerHTML = `<img src="${configPath}FLOWER_${i}.jpg" onerror="this.src='https://via.placeholder.com/60?text=FLW+${i}'"><span>${flowerNames[i-1]}</span>`;
+                flowerContainer.appendChild(btn);
+            }
+            updateUI();
+        }
+
+        function selectPart(type, index) {
+            if(type === 'base') {
+                selectedBase = index;
+                document.querySelectorAll('.base-row .thumb-btn').forEach(b => b.classList.remove('active'));
+                document.getElementById(`base-btn-${index}`).classList.add('active');
+            } else {
+                selectedFlower = index;
+                document.querySelectorAll('.flower-col .thumb-btn').forEach(b => b.classList.remove('active'));
+                document.getElementById(`flower-btn-${index}`).classList.add('active');
+            }
+            updateUI();
+        }
+
+        function updateUI() {
+            const img = document.getElementById('main-product-img');
+            const summary = document.getElementById('selection-summary');
+            const waLink = document.getElementById('wa-order-link');
+
+            const fileName = `BASE_${selectedBase}_FLOWER_${selectedFlower}.jpg`;
+            img.style.opacity = 0.5;
+            img.src = configPath + fileName;
+            img.onload = () => img.style.opacity = 1;
+
+            const selectionText = `בסיס ${baseNames[selectedBase-1]} עם ${flowerNames[selectedFlower-1]}`;
+            summary.innerText = `הבחירה שלכם: ${selectionText}`;
+            
+            const waMsg = encodeURIComponent(`היי, הגעתי מהאתר והרכבתי עיצוב אישי: ${selectionText}. אשמח לדעת מה המחיר וזמן האספקה.`);
+            waLink.href = `https://wa.me/972529217936?text=${waMsg}`;
+        }
+
+        window.onload = initConfigurator;
+    </script>
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
