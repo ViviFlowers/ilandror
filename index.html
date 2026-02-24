@@ -17,125 +17,109 @@
             margin: 0;
             background-color: var(--bg-color);
             color: var(--primary-color);
-            line-height: 1.6;
+            line-height: 1.4;
             text-align: right;
         }
 
         /* כפתור ווטסאפ צף */
         .whatsapp-float {
-            position: fixed; width: 60px; height: 60px; bottom: 40px; left: 40px;
+            position: fixed; width: 50px; height: 50px; bottom: 20px; left: 20px;
             background-color: var(--whatsapp-green); color: #FFF; border-radius: 50px;
             text-align: center; box-shadow: 2px 2px 10px rgba(0,0,0,0.2); z-index: 1000;
-            display: flex; align-items: center; justify-content: center; transition: transform 0.3s;
+            display: flex; align-items: center; justify-content: center;
         }
-        .whatsapp-float:hover { transform: scale(1.1); }
-        .whatsapp-float img { width: 35px; height: 35px; }
+        .whatsapp-float img { width: 30px; height: 30px; }
 
-        header { background: white; padding: 1rem; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
-        .logo-img { max-height: 100px; width: auto; }
+        header { background: white; padding: 0.5rem; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .logo-img { max-height: 80px; width: auto; }
 
         .hero {
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            padding: 3rem 1rem; text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('https://viviflowers.github.io/ilandror/images/vivi.jfif');
+            padding: 1.5rem 1rem; text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://viviflowers.github.io/ilandror/images/vivi.jfif');
             background-size: cover; background-position: center; color: white;
         }
-        .hero h1 { font-size: 2.5rem; margin-bottom: 0.5rem; color: var(--accent-color); }
+        .hero h1 { font-size: 2rem; margin: 0; color: var(--accent-color); }
+        .hero p { margin: 5px 0 0; font-size: 1.1rem; }
 
-        /* סטודיו לעיצוב אישי - מבנה חדש */
-        .configurator-section { padding: 2rem 1rem; max-width: 1100px; margin: 0 auto; }
+        /* סטודיו לעיצוב אישי - מבנה הדוק למסך אחד */
+        .configurator-section { padding: 1.5rem 1rem; max-width: 1000px; margin: 0 auto; }
 
         .config-grid {
             display: grid;
-            grid-template-areas: 
-                "flower-row flower-row"
-                "main-display base-col";
-            grid-template-columns: 1fr 130px;
+            grid-template-columns: 140px 1fr; /* עמודה ימנית לבסיסים, שאר המקום לתמונה */
             gap: 15px;
             background: white;
             padding: 15px;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            direction: rtl; /* הבטחת כיווניות ימין לשמאל */
         }
 
-        /* שורת פרחים למעלה */
+        /* שורת פרחים עליונה - תופסת את כל הרוחב */
         .flower-row {
-            grid-area: flower-row;
+            grid-column: 1 / span 2;
             display: flex;
             justify-content: center;
-            gap: 12px;
-            padding-bottom: 15px;
+            gap: 10px;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
             border-bottom: 1px solid #eee;
             flex-wrap: wrap;
         }
 
-        /* עמודת בסיסים בימין */
+        /* עמודת בסיסים - ממוקמת מימין */
         .base-col {
-            grid-area: base-col;
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            align-items: center;
-            border-right: 1px solid #eee;
-            padding-right: 10px;
+            gap: 8px;
+            border-left: 1px solid #eee; /* קו מפריד משמאל לבסיסים */
+            padding-left: 10px;
         }
 
-        /* תצוגה מרכזית - מוקטנת */
+        /* תצוגה מרכזית - מוקטנת משמעותית */
         .preview-area {
-            grid-area: main-display;
             display: flex;
             justify-content: center;
             align-items: center;
-            background: #fdfdfd;
-            border-radius: 15px;
-            overflow: hidden;
-            max-height: 450px; /* הגבלה כדי שייכנס במסך אחד */
+            background: #f9f9f9;
+            border-radius: 10px;
+            height: 350px; /* גובה קבוע קטן יותר */
         }
 
         #main-product-img {
+            max-height: 320px;
             max-width: 100%;
-            max-height: 400px; /* צמצום הגובה */
             width: auto;
             object-fit: contain;
-            transition: opacity 0.3s ease;
         }
 
         /* כפתורי בחירה */
         .thumb-btn {
-            border: 2px solid #eee; background: white; cursor: pointer; border-radius: 10px;
-            padding: 5px; transition: 0.3s; display: flex; flex-direction: column; 
-            align-items: center; font-size: 0.75rem; width: 85px;
+            border: 2px solid #ddd; background: white; cursor: pointer; border-radius: 8px;
+            padding: 4px; transition: 0.2s; display: flex; flex-direction: column; 
+            align-items: center; font-size: 0.7rem; width: 75px;
         }
-        .thumb-btn img { width: 55px; height: 55px; object-fit: cover; border-radius: 5px; margin-bottom: 3px; }
-        .thumb-btn.active { border-color: var(--accent-color); background: #fffcf0; box-shadow: 0 0 5px rgba(197, 160, 89, 0.3); }
+        .thumb-btn img { width: 50px; height: 50px; object-fit: cover; border-radius: 4px; display: block; }
+        .thumb-btn:hover { border-color: var(--accent-color); }
+        .thumb-btn.active { border-color: var(--accent-color); background: #fffcf0; border-width: 3px; }
 
-        .section-title { text-align: center; margin-top: 2rem; font-size: 2rem; color: var(--primary-color); }
-        .cta-button { 
-            background-color: var(--accent-color); color: white; padding: 0.8rem 2rem; 
-            text-decoration: none; border-radius: 50px; font-weight: bold; display: inline-block; 
-            margin-top: 15px; border: none; cursor: pointer; transition: 0.3s;
-        }
-        .cta-button:hover { background-color: #a68541; transform: translateY(-2px); }
-
-        .about-section { padding: 3rem 1rem; max-width: 800px; margin: 0 auto; text-align: center; }
-        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; padding: 2rem; max-width: 1100px; margin: 0 auto; }
-        .card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        .card-img-container { width: 100%; height: 250px; overflow: hidden; }
-        .card-img-container img { width: 100%; height: 100%; object-fit: cover; }
-
-        .contact { background: #f4f4f4; padding: 3rem 1rem; text-align: center; }
-        form { max-width: 450px; margin: 1.5rem auto; display: flex; flex-direction: column; gap: 1rem; background: white; padding: 1.5rem; border-radius: 15px; }
-        input, textarea { padding: 0.8rem; border: 1px solid #ddd; border-radius: 8px; font-family: inherit; width: 100%; box-sizing: border-box; }
+        .section-title { text-align: center; margin: 1rem 0; font-size: 1.8rem; color: var(--primary-color); }
         
-        footer { padding: 2rem; text-align: center; background: var(--primary-color); color: white; }
+        .cta-button { 
+            background-color: var(--accent-color); color: white; padding: 0.7rem 1.5rem; 
+            text-decoration: none; border-radius: 50px; font-weight: bold; display: inline-block; 
+            margin-top: 10px; border: none; cursor: pointer;
+        }
+
+        .about-section { padding: 2rem 1rem; max-width: 700px; margin: 0 auto; text-align: center; font-size: 0.95rem; }
+        
+        footer { padding: 1.5rem; text-align: center; background: var(--primary-color); color: white; font-size: 0.8rem; }
 
         @media (max-width: 768px) {
-            .config-grid { 
-                grid-template-areas: "flower-row" "main-display" "base-col"; 
-                grid-template-columns: 1fr;
-            }
-            .base-col { flex-direction: row; flex-wrap: wrap; border-right: none; border-top: 1px solid #eee; padding: 10px 0; justify-content: center; }
-            .hero h1 { font-size: 1.8rem; }
+            .config-grid { grid-template-columns: 1fr; }
+            .base-col { flex-direction: row; border-left: none; border-top: 1px solid #eee; padding: 10px 0; justify-content: center; flex-wrap: wrap; }
+            .preview-area { height: 250px; }
+            #main-product-img { max-height: 230px; }
         }
     </style>
 </head>
@@ -147,136 +131,10 @@
 
     <section class="hero">
         <h1>יופי נצחי בעבודת יד</h1>
-        <p>עצבו את השילוב המדויק עבורכם בסטודיו הווירטואלי</p>
+        <p>הסטודיו האישי שלכם לעיצוב פריחת הברזל</p>
     </section>
 
-    <!-- הסטודיו הווירטואלי -->
     <section class="configurator-section" id="configurator">
-        <h2 class="section-title">סטודיו לעיצוב אישי</h2>
-        <p style="text-align: center; margin-bottom: 20px; opacity: 0.8;">בחרו את הפרח (למעלה) ואת הבסיס (מימין)</p>
+        <h2 class="section-title">מעצב הפרחים</h2>
 
-        <div class="config-grid">
-            <!-- שורת פרחים עליונה -->
-            <div class="flower-row" id="flower-options"></div>
-
-            <!-- תצוגה מרכזית -->
-            <div class="preview-area">
-                <img id="main-product-img" src="https://viviflowers.github.io/ilandror/CONFIGURATOR/Base1_Flower1.jpg" alt="העיצוב הנבחר">
-            </div>
-
-            <!-- עמודת בסיסים ימנית -->
-            <div class="base-col" id="base-options"></div>
-        </div>
-
-        <div style="text-align: center; margin-top: 30px;">
-            <h3 id="selection-summary" style="color: var(--accent-color); margin-bottom: 5px;">הבחירה שלכם: בסיס 1 עם פרח 1</h3>
-            <a id="wa-order-link" href="#" target="_blank" class="cta-button" style="background-color: var(--whatsapp-green);">הזמנה מהירה בווטסאפ</a>
-        </div>
-    </section>
-
-    <!-- סיפור המותג -->
-    <section class="about-section">
-        <h2 style="color: var(--accent-color);">הסיפור שלנו</h2>
-        <p>
-            בסדנה קטנה, בין רעש הפטיש לניצוצות הריתוך, ברזל קר ותעשייתי הופך תחת ידיו המיומנות של אומן לפרח עדין וצבעוני.
-            <b>פריחת הברזל</b> היא תוצר של סבלנות, ניסיון חיים ואהבה לפרטים. פרחים שלא זקוקים למים ולא ינבלו לעולם.
-        </p>
-    </section>
-
-    <h2 class="section-title">מהסדנה של האומן</h2>
-    <section class="gallery">
-        <div class="card"><div class="card-img-container"><img src="https://viviflowers.github.io/ilandror/images/21.jpg" alt="תהליך"></div></div>
-        <div class="card"><div class="card-img-container"><img src="https://viviflowers.github.io/ilandror/images/23.jpg" alt="צביעה"></div></div>
-        <div class="card"><div class="card-img-container"><img src="https://viviflowers.github.io/ilandror/images/24.jpg" alt="תוצאה"></div></div>
-    </section>
-
-    <section id="contact" class="contact">
-        <h2>יצירת קשר</h2>
-        <form action="https://formspree.io/f/YOUR_ID" method="POST">
-            <input type="text" name="name" placeholder="שם מלא" required>
-            <input type="tel" name="phone" placeholder="טלפון" required>
-            <textarea name="msg" placeholder="איך נוכל לעזור?" rows="3"></textarea>
-            <button type="submit" class="cta-button">שליחת הודעה</button>
-        </form>
-    </section>
-
-    <footer>
-        <img src="logo.png" alt="פריחת הברזל" style="max-height: 50px; filter: brightness(0) invert(1); margin-bottom: 10px;">
-        <p>&copy; 2024 פריחת הברזל | אומנות נצחית בעבודת יד</p>
-    </footer>
-
-    <a href="https://wa.me/972529217936" class="whatsapp-float" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-    </a>
-
-    <script>
-        const configPath = "https://viviflowers.github.io/ilandror/CONFIGURATOR/";
-        let selectedBase = 1;
-        let selectedFlower = 1;
-
-        const baseNames = ["סלע חולי", "אבן בזלת", "עץ כפרי", "בטון מוחלק", "שיש מעוצב"];
-        const flowerNames = ["כלנית אדומה", "סחלב סגול", "חרצית לבנה", "ורד ורוד", "צבעוני צהוב"];
-
-        function initConfigurator() {
-            const baseContainer = document.getElementById('base-options');
-            const flowerContainer = document.getElementById('flower-options');
-
-            // יצירת פרחים (שורה עליונה)
-            for(let i=1; i<=5; i++) {
-                const btn = document.createElement('button');
-                btn.className = `thumb-btn ${i===1 ? 'active' : ''}`;
-                btn.id = `flower-btn-${i}`;
-                btn.onclick = () => selectPart('flower', i);
-                // תיקון שם הקובץ ל-Flower1.jpg
-                btn.innerHTML = `<img src="${configPath}Flower${i}.jpg" onerror="this.src='https://via.placeholder.com/60?text=Flower${i}'"><span>${flowerNames[i-1]}</span>`;
-                flowerContainer.appendChild(btn);
-            }
-
-            // יצירת בסיסים (עמודה ימנית)
-            for(let i=1; i<=5; i++) {
-                const btn = document.createElement('button');
-                btn.className = `thumb-btn ${i===1 ? 'active' : ''}`;
-                btn.id = `base-btn-${i}`;
-                btn.onclick = () => selectPart('base', i);
-                // תיקון שם הקובץ ל-Base1.jpg
-                btn.innerHTML = `<img src="${configPath}Base${i}.jpg" onerror="this.src='https://via.placeholder.com/60?text=Base${i}'"><span>${baseNames[i-1]}</span>`;
-                baseContainer.appendChild(btn);
-            }
-            updateUI();
-        }
-
-        function selectPart(type, index) {
-            if(type === 'base') {
-                selectedBase = index;
-                document.querySelectorAll('.base-col .thumb-btn').forEach(b => b.classList.remove('active'));
-                document.getElementById(`base-btn-${index}`).classList.add('active');
-            } else {
-                selectedFlower = index;
-                document.querySelectorAll('.flower-row .thumb-btn').forEach(b => b.classList.remove('active'));
-                document.getElementById(`flower-btn-${index}`).classList.add('active');
-            }
-            updateUI();
-        }
-
-        function updateUI() {
-            const img = document.getElementById('main-product-img');
-            const summary = document.getElementById('selection-summary');
-            const waLink = document.getElementById('wa-order-link');
-
-            // מבנה שם קובץ השילוב: Base1_Flower1.jpg
-            const fileName = `Base${selectedBase}_Flower${selectedFlower}.jpg`;
-            img.style.opacity = 0.5;
-            img.src = configPath + fileName;
-            img.onload = () => img.style.opacity = 1;
-
-            const selectionText = `בסיס ${baseNames[selectedBase-1]} עם ${flowerNames[selectedFlower-1]}`;
-            summary.innerText = `הבחירה שלכם: ${selectionText}`;
-            
-            const waMsg = encodeURIComponent(`היי, הגעתי מהאתר ועיצבתי אישית: ${selectionText}. אשמח לדעת מה המחיר.`);
-            waLink.href = `https://wa.me/972529217936?text=${waMsg}`;
-        }
-
-        window.onload = initConfigurator;
-    </script>
-</body>
-</html>
+        <div class="config-grid
