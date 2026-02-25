@@ -41,8 +41,8 @@
         }
         .hero h1 { font-size: 2.2rem; margin: 0; color: var(--accent-color); }
 
-        /* סטודיו לעיצוב אישי - יישור מרכזי */
-        .configurator-section { padding: 1.5rem 1rem; max-width: 900px; margin: 0 auto; overflow: visible; }
+        /* סטודיו לעיצוב אישי - יישור מרכזי מתוקן */
+        .configurator-section { padding: 1.5rem 1rem; max-width: 900px; margin: 0 auto; }
         .config-grid {
             display: grid;
             grid-template-columns: 100px 1fr; 
@@ -52,7 +52,6 @@
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.05);
             direction: rtl;
-            position: relative;
         }
 
         .flower-row {
@@ -72,7 +71,6 @@
             border-left: 1px solid #eee;
             padding-left: 10px;
             align-items: center;
-            z-index: 2;
         }
 
         .preview-area {
@@ -85,12 +83,12 @@
         }
 
         #main-product-img {
-            max-height: 260px; /* תמונה מוקטנת */
+            max-height: 260px;
             width: auto;
             object-fit: contain;
             transition: opacity 0.3s ease;
-            /* הזזה משמעותית ימינה כדי שהמרכז יתיישר עם מרכז האתר */
-            transform: translateX(100px); 
+            /* הזזה חצי דרך חזרה - לאיזון מושלם מול המרכז */
+            transform: translateX(50px); 
         }
 
         /* לחצנים קטנים ונקיים */
@@ -216,7 +214,7 @@
 
         const baseNames = ["סלע חולי", "אבן בזלת", "עץ כפרי", "בטון מוחלק"];
         
-        // סדר הפרחים מימין לשמאל כפי שביקשת
+        // סדר שמות הפרחים מימין לשמאל
         const flowerNames = [
             "ורד ורוד",     // Flower1
             "וינקה סגולה",  // Flower2
@@ -229,7 +227,7 @@
             const baseContainer = document.getElementById('base-options');
             const flowerContainer = document.getElementById('flower-options');
 
-            // ייצור 5 לחצני פרחים (הראשון מימין יהיה ורד ורוד)
+            // 5 פרחים
             for(let i=1; i<=5; i++) {
                 const btn = document.createElement('button');
                 btn.className = `thumb-btn ${i===1 ? 'active' : ''}`;
@@ -240,7 +238,7 @@
                 flowerContainer.appendChild(btn);
             }
 
-            // ייצור 4 לחצני בסיסים
+            // 4 בסיסים
             for(let i=1; i<=4; i++) {
                 const btn = document.createElement('button');
                 btn.className = `thumb-btn ${i===1 ? 'active' : ''}`;
