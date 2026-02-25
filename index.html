@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>פריחת הברזל | Iron Bloom - אומנות נצחית</title>
+    <title>פריחת הברזל | Iron Bloom - עיצוב אישי</title>
     <style>
         :root {
             --primary-color: #1a1a1a;
@@ -40,30 +40,29 @@
             background-size: cover; background-position: center; color: white;
         }
         .hero h1 { font-size: 2.2rem; margin: 0; color: var(--accent-color); }
-        .hero p { margin: 8px 0 0; font-size: 1.1rem; opacity: 0.9; }
 
-        /* סטודיו לעיצוב אישי - גרסה קומפקטית */
-        .configurator-section { padding: 1.5rem 1rem; max-width: 1000px; margin: 0 auto; }
+        /* סטודיו לעיצוב אישי - גרסת פרימיום מלוטשת */
+        .configurator-section { padding: 1.5rem 1rem; max-width: 900px; margin: 0 auto; }
         .config-grid {
             display: grid;
-            grid-template-columns: 140px 1fr; 
-            gap: 15px;
+            grid-template-columns: 100px 1fr; /* עמודה צרה יותר לבסיסים */
+            gap: 10px;
             background: white;
             padding: 15px;
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.05);
             direction: rtl;
+            overflow: hidden;
         }
 
         .flower-row {
             grid-column: 1 / span 2;
             display: flex;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
             margin-bottom: 10px;
             padding-bottom: 10px;
             border-bottom: 1px solid #eee;
-            flex-wrap: wrap;
         }
 
         .base-col {
@@ -72,72 +71,80 @@
             gap: 8px;
             border-left: 1px solid #eee;
             padding-left: 10px;
+            align-items: center;
         }
 
         .preview-area {
             display: flex;
             justify-content: center;
             align-items: center;
-            background: #fdfdfd;
-            border-radius: 10px;
-            height: 310px; /* גובה מוקטן של האזור המרכזי */
+            background: #fff;
+            height: 320px;
+            position: relative;
         }
 
         #main-product-img {
-            max-height: 280px; /* תמונה מוקטנת */
-            max-width: 100%;
+            max-height: 300px;
             width: auto;
             object-fit: contain;
             transition: opacity 0.3s ease;
+            /* הזזה שמאלה כדי למרכז מול הלוגו (מפצה על עמודת הבסיסים מימין) */
+            transform: translateX(-40px); 
         }
 
+        /* לחצנים מוקטנים ללא מלל */
         .thumb-btn {
-            border: 2px solid #ddd; background: white; cursor: pointer; border-radius: 8px;
-            padding: 4px; transition: 0.2s; display: flex; flex-direction: column; 
-            align-items: center; font-size: 0.75rem; width: 85px;
+            border: 2px solid #eee; 
+            background: white; 
+            cursor: pointer; 
+            border-radius: 6px;
+            padding: 0; /* ללא מרווח פנימי כדי שהתמונה תמלא הכל */
+            transition: 0.2s; 
+            width: 65px; 
+            height: 65px;
+            overflow: hidden;
+            display: block;
         }
-        .thumb-btn img { width: 50px; height: 50px; object-fit: cover; border-radius: 4px; margin-bottom: 3px; }
-        .thumb-btn.active { border-color: var(--accent-color); background: #fffcf0; border-width: 3px; }
+        .thumb-btn img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            display: block;
+        }
+        .thumb-btn.active { 
+            border-color: var(--accent-color); 
+            box-shadow: 0 0 8px rgba(197, 160, 89, 0.4);
+            transform: scale(1.05);
+        }
 
-        .section-title { text-align: center; margin: 2.5rem 0 1.5rem; font-size: 1.8rem; color: var(--primary-color); }
+        .section-title { text-align: center; margin: 2rem 0 1rem; font-size: 1.8rem; color: var(--primary-color); }
         
-        .about-section { 
-            padding: 3rem 2rem; max-width: 850px; margin: 0 auto; text-align: center; 
-            background: white; border-radius: 20px;
-        }
-        .about-section p { font-size: 1.15rem; line-height: 1.8; color: #444; }
+        .about-section { padding: 3rem 2rem; max-width: 800px; margin: 0 auto; text-align: center; }
+        .about-section p { font-size: 1.1rem; line-height: 1.7; color: #444; }
 
-        .gallery { 
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-            gap: 1.5rem; padding: 2rem; max-width: 1100px; margin: 0 auto; 
-        }
-        .card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.06); }
-        .card-img-container { width: 100%; height: 250px; overflow: hidden; }
-        .card-img-container img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; padding: 2rem; max-width: 1000px; margin: 0 auto; }
+        .card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .card-img-container { width: 100%; height: 240px; overflow: hidden; }
+        .card-img-container img { width: 100%; height: 100%; object-fit: cover; }
 
-        .contact { background: #f4f4f4; padding: 3rem 1rem; text-align: center; margin-top: 3rem; }
-        form { 
-            max-width: 450px; margin: 1.5rem auto; display: flex; flex-direction: column; 
-            gap: 1rem; background: white; padding: 2rem; border-radius: 20px; 
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-        }
-        input, textarea { padding: 0.8rem; border: 1px solid #ddd; border-radius: 10px; font-family: inherit; font-size: 1rem; width: 100%; box-sizing: border-box; }
+        .contact { background: #f4f4f4; padding: 3rem 1rem; text-align: center; }
+        form { max-width: 400px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem; background: white; padding: 2rem; border-radius: 15px; }
+        input, textarea { padding: 0.8rem; border: 1px solid #ddd; border-radius: 8px; font-family: inherit; width: 100%; box-sizing: border-box; }
         
         .cta-button { 
-            background-color: var(--accent-color); color: white; padding: 0.9rem 2rem; 
+            background-color: var(--accent-color); color: white; padding: 0.8rem 2rem; 
             text-decoration: none; border-radius: 50px; font-weight: bold; display: inline-block; 
-            border: none; cursor: pointer; transition: 0.3s; font-size: 1.05rem;
+            border: none; cursor: pointer; transition: 0.3s;
         }
-        .cta-button:hover { background-color: #a68541; transform: translateY(-2px); }
 
         footer { padding: 2rem; text-align: center; background: var(--primary-color); color: white; }
-        .footer-logo { max-height: 50px; filter: brightness(0) invert(1); margin-bottom: 10px; }
+        .footer-logo { max-height: 45px; filter: brightness(0) invert(1); display: block; margin: 0 auto 10px; }
 
         @media (max-width: 768px) {
             .config-grid { grid-template-columns: 1fr; }
             .base-col { flex-direction: row; border-left: none; border-top: 1px solid #eee; padding: 10px 0; justify-content: center; flex-wrap: wrap; }
-            .preview-area { height: 260px; }
-            #main-product-img { max-height: 240px; }
+            #main-product-img { transform: translateX(0); } /* ביטול הזזה בנייד */
+            .preview-area { height: 250px; }
         }
     </style>
 </head>
@@ -152,7 +159,6 @@
         <p>מעצבים את היופי שנשאר איתכם לתמיד</p>
     </section>
 
-    <!-- הסטודיו הווירטואלי -->
     <section class="configurator-section" id="configurator">
         <h2 class="section-title">סטודיו לעיצוב אישי</h2>
         <div class="config-grid">
@@ -164,21 +170,19 @@
         </div>
 
         <div style="text-align: center; margin-top: 20px;">
-            <h4 id="selection-summary" style="color: var(--accent-color); margin-bottom: 5px;">הבחירה שלכם: בסיס 1 עם פרח 1</h4>
+            <h4 id="selection-summary" style="color: var(--accent-color); margin: 0 0 10px;">בסיס סלע חולי עם כלנית אדומה</h4>
             <a id="wa-order-link" href="#" target="_blank" class="cta-button" style="background-color: var(--whatsapp-green);">הזמנה בווטסאפ</a>
         </div>
     </section>
 
-    <!-- סיפור המותג -->
     <section class="about-section">
-        <h2 style="color: var(--accent-color); margin-bottom: 1rem;">הסיפור שלנו</h2>
+        <h2 style="color: var(--accent-color);">הסיפור שלנו</h2>
         <p>
             בסדנה קטנה, בין רעש הפטיש לניצוצות הריתוך, ברזל קר ותעשייתי הופך תחת ידיו המיומנות של אומן לפרח עדין וצבעוני. 
             <b>פריחת הברזל (Iron Bloom)</b> היא אומנות נצחית שלא זקוקה למים ולא תנבול לעולם.
         </p>
     </section>
 
-    <!-- גלריה מהסדנה -->
     <h2 class="section-title">מהסדנה של האומן</h2>
     <section class="gallery">
         <div class="card"><div class="card-img-container"><img src="https://viviflowers.github.io/ilandror/images/21.jpg" alt="תהליך"></div></div>
@@ -186,7 +190,6 @@
         <div class="card"><div class="card-img-container"><img src="https://viviflowers.github.io/ilandror/images/24.jpg" alt="סיום"></div></div>
     </section>
 
-    <!-- יצירת קשר -->
     <section id="contact" class="contact">
         <h2>צרו קשר</h2>
         <form action="https://formspree.io/f/YOUR_ID" method="POST">
@@ -198,11 +201,11 @@
     </section>
 
     <footer>
-        <img src="logo.png" alt="" class="footer-logo" onerror="this.style.display='none'">
-        <p>&copy; 2024 פריחת הברזל | Iron Bloom | אומנות נצחית בעבודת יד</p>
+        <!-- טיפול במלבן הלבן: הלוגו מוסתר בברירת מחדל ומוצג רק אם נטען בהצלחה -->
+        <img src="logo.png" alt="" class="footer-logo" onload="this.style.display='block'" onerror="this.style.display='none'" style="display:none;">
+        <p style="margin:0;">&copy; 2024 פריחת הברזל | Iron Bloom</p>
     </footer>
 
-    <!-- ווטסאפ צף -->
     <a href="https://wa.me/972529217936" class="whatsapp-float" target="_blank">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
     </a>
@@ -219,21 +222,25 @@
             const baseContainer = document.getElementById('base-options');
             const flowerContainer = document.getElementById('flower-options');
 
+            // פרחים (ללא טקסט)
             for(let i=1; i<=5; i++) {
                 const btn = document.createElement('button');
                 btn.className = `thumb-btn ${i===1 ? 'active' : ''}`;
                 btn.id = `flower-btn-${i}`;
+                btn.title = flowerNames[i-1]; // הצגת שם הפרח בציפה של העכבר
                 btn.onclick = () => selectPart('flower', i);
-                btn.innerHTML = `<img src="${configPath}Flower${i}.jpg" alt="F${i}" onerror="this.src='https://via.placeholder.com/50/c5a059/ffffff?text=F${i}'"><span>${flowerNames[i-1]}</span>`;
+                btn.innerHTML = `<img src="${configPath}Flower${i}.jpg" onerror="this.src='https://via.placeholder.com/65/c5a059/ffffff?text='">`;
                 flowerContainer.appendChild(btn);
             }
 
+            // בסיסים (ללא טקסט)
             for(let i=1; i<=4; i++) {
                 const btn = document.createElement('button');
                 btn.className = `thumb-btn ${i===1 ? 'active' : ''}`;
                 btn.id = `base-btn-${i}`;
+                btn.title = baseNames[i-1];
                 btn.onclick = () => selectPart('base', i);
-                btn.innerHTML = `<img src="${configPath}Base${i}.jpg" alt="B${i}" onerror="this.src='https://via.placeholder.com/50/333333/ffffff?text=B${i}'"><span>${baseNames[i-1]}</span>`;
+                btn.innerHTML = `<img src="${configPath}Base${i}.jpg" onerror="this.src='https://via.placeholder.com/65/333333/ffffff?text='">`;
                 baseContainer.appendChild(btn);
             }
             updateUI();
@@ -262,10 +269,10 @@
             img.src = configPath + fileName;
             img.onload = () => img.style.opacity = 1;
 
-            const selectionText = `בסיס ${baseNames[selectedBase-1]} עם ${flowerNames[selectedFlower-1]}`;
-            summary.innerText = `הבחירה: ${selectionText}`;
+            const selectionText = `${baseNames[selectedBase-1]} עם ${flowerNames[selectedFlower-1]}`;
+            summary.innerText = `בסיס ${selectionText}`;
             
-            const waMsg = encodeURIComponent(`היי, עיצבתי אישית באתר: ${selectionText}. אשמח לפרטים.`);
+            const waMsg = encodeURIComponent(`היי, עיצבתי אישית באתר: בסיס ${selectionText}. אשמח לפרטים.`);
             waLink.href = `https://wa.me/972529217936?text=${waMsg}`;
         }
 
