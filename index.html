@@ -137,4 +137,109 @@
     <section class="configurator-section" id="configurator">
         <h2 class="section-title">מעצב הפרחים</h2>
 
-        <div class="config-grid
+        <div class="config-grid">
+            <!-- שורה עליונה: פרחים -->
+            <div class="flower-row" id="flower-options"></div>
+
+            <!-- עמודה ימנית: בסיסים -->
+            <div class="base-col" id="base-options"></div>
+
+            <!-- תצוגה מרכזית -->
+            <div class="preview-area">
+                <img id="main-product-img" src="https://viviflowers.github.io/ilandror/CONFIGURATOR/Base1_Flower1.jpg" alt="העיצוב שלכם">
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 20px;">
+            <h4 id="selection-summary" style="color: var(--accent-color); margin: 5px 0;">הבחירה: בסיס 1 עם פרח 1</h4>
+            <a id="wa-order-link" href="#" target="_blank" class="cta-button" style="background-color: var(--whatsapp-green);">הזמנה בווטסאפ</a>
+        </div>
+    </section>
+
+    <section class="about-section">
+        <h2 style="color: var(--accent-color); margin-bottom: 10px;">הסיפור שלנו</h2>
+        <p>
+            בסדנה קטנה, ברזל קר ותעשייתי הופך תחת ידיו של אומן לפרח עדין וצבעוני.
+            <b>פריחת הברזל</b> היא אומנות נצחית שלא זקוקה למים ולא תנבול לעולם.
+        </p>
+    </section>
+
+    <footer>
+        <img src="logo.png" alt="פריחת הברזל" style="max-height: 40px; filter: brightness(0) invert(1); margin-bottom: 5px;">
+        <p>&copy; 2024 פריחת הברזל | Iron Bloom</p>
+    </footer>
+
+    <a href="https://wa.me/972529217936" class="whatsapp-float" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Icon">
+    </a>
+
+    <script>
+        const configPath = "https://viviflowers.github.io/ilandror/CONFIGURATOR/";
+        let selectedBase = 1;
+        let selectedFlower = 1;
+
+        const baseNames = ["סלע חולי", "אבן בזלת", "עץ כפרי", "בטון מוחלק", "שיש מעוצב"];
+        const flowerNames = ["כלנית אדומה", "סחלב סגול", "חרצית לבנה", "ורד ורוד", "צבעוני צהוב"];
+
+        function initConfigurator() {
+            const baseContainer = document.getElementById('base-options');
+            const flowerContainer = document.getElementById('flower-options');
+
+            // יצירת פרחים (למעלה)
+            for(let i=1; i<=5; i++) {
+                const btn = document.createElement('button');
+                btn.className = `thumb-btn ${i===1 ? 'active' : ''}`;
+                btn.id = `flower-btn-${i}`;
+                btn.onclick = () => selectPart('flower', i);
+                // שימוש בשם המדויק Flower1.jpg
+                btn.innerHTML = `<img src="${configPath}Flower${i}.jpg" alt="F${i}" onerror="this.src='https://via.placeholder.com/50/c5a059/ffffff?text=F${i}'"><span>${flowerNames[i-1]}</span>`;
+                flowerContainer.appendChild(btn);
+            }
+
+            // יצירת בסיסים (מימין)
+            for(let i=1; i<=5; i++) {
+                const btn = document.createElement('button');
+                btn.className = `thumb-btn ${i===1 ? 'active' : ''}`;
+                btn.id = `base-btn-${i}`;
+                btn.onclick = () => selectPart('base', i);
+                // שימוש בשם המדויק Base1.jpg
+                btn.innerHTML = `<img src="${configPath}Base${i}.jpg" alt="B${i}" onerror="this.src='https://via.placeholder.com/50/333333/ffffff?text=B${i}'"><span>${baseNames[i-1]}</span>`;
+                baseContainer.appendChild(btn);
+            }
+            updateUI();
+        }
+
+        function selectPart(type, index) {
+            if(type === 'base') {
+                selectedBase = index;
+                document.querySelectorAll('.base-col .thumb-btn').forEach(b => b.classList.remove('active'));
+                document.getElementById(`base-btn-${index}`).classList.add('active');
+            } else {
+                selectedFlower = index;
+                document.querySelectorAll('.flower-row .thumb-btn').forEach(b => b.classList.remove('active'));
+                document.getElementById(`flower-btn-${index}`).classList.add('active');
+            }
+            updateUI();
+        }
+
+        function updateUI() {
+            const img = document.getElementById('main-product-img');
+            const summary = document.getElementById('selection-summary');
+            const waLink = document.getElementById('wa-order-link');
+
+            const fileName = `Base${selectedBase}_Flower${selectedFlower}.jpg`;
+            img.style.opacity = 0.5;
+            img.src = configPath + fileName;
+            img.onload = () => img.style.opacity = 1;
+
+            const selectionText = `${baseNames[selectedBase-1]} עם ${flowerNames[selectedFlower-1]}`;
+            summary.innerText = `הבחירה: ${selectionText}`;
+            
+            const waMsg = encodeURIComponent(`היי, אני רוצה להזמין עיצוב אישי: ${selectionText}`);
+            waLink.href = `https://wa.me/972529217936?text=${waMsg}`;
+        }
+
+        window.onload = initConfigurator;
+    </script>
+</body>
+</html>
