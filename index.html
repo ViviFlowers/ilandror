@@ -212,7 +212,7 @@
         let selectedBase = 1;
         let selectedFlower = 1;
 
-        const baseNames = ["סלע חולי", "אבן בזלת", "עץ כפרי", "בטון מוחלק"];
+        const baseNames = ["סלע חולי", "אבן בזלת", "עץ כפרי"];
         
         // סדר שמות הפרחים מימין לשמאל
         const flowerNames = [
@@ -238,8 +238,8 @@
                 flowerContainer.appendChild(btn);
             }
 
-            // 4 בסיסים
-            for(let i=1; i<=4; i++) {
+            // 3 בסיסים
+            for(let i=1; i<=3; i++) {
                 const btn = document.createElement('button');
                 btn.className = `thumb-btn ${i===1 ? 'active' : ''}`;
                 btn.id = `base-btn-${i}`;
