@@ -12,6 +12,8 @@
             --whatsapp-green: #25d366;
         }
 
+        html { scroll-behavior: smooth; }
+
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
             margin: 0;
@@ -30,8 +32,32 @@
         .whatsapp-float:hover { transform: scale(1.1); }
         .whatsapp-float img { width: 32px; height: 32px; }
 
-        header { background: white; padding: 0.8rem; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05); position: sticky; top:0; z-index: 1001; }
-        .logo-img { max-height: 90px; width: auto; display: block; margin: 0 auto; border: none; }
+        header { background: white; padding: 0.6rem 1rem; box-shadow: 0 2px 5px rgba(0,0,0,0.05); position: sticky; top:0; z-index: 1001; }
+        .header-inner {
+            max-width: 1100px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+        }
+        .logo-img { max-height: 64px; width: auto; display: block; border: none; }
+
+        /* ניווט ראשי */
+        .site-nav { display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
+        .site-nav a {
+            color: var(--primary-color); text-decoration: none; font-size: 0.95rem;
+            padding: 0.45rem 0.7rem; border-radius: 50px; transition: background 0.2s, color 0.2s;
+            white-space: nowrap;
+        }
+        .site-nav a:hover { background: #f4efe6; color: var(--accent-color); }
+        .site-nav a.nav-graves {
+            background: var(--primary-color); color: var(--accent-color); font-weight: bold;
+        }
+        .site-nav a.nav-graves:hover { background: #333; }
+        .site-nav a.nav-home.active { background: #f4efe6; color: var(--accent-color); font-weight: bold; }
+
+        .nav-toggle {
+            display: none; background: none; border: 1px solid #ddd; border-radius: 8px;
+            font-size: 1.4rem; line-height: 1; padding: 0.35rem 0.7rem; cursor: pointer;
+            color: var(--primary-color);
+        }
 
         .hero {
             padding: 4rem 1rem; text-align: center;
@@ -71,7 +97,12 @@
             color: white;
             border: none;
         }
-        .footer-nav a { color: var(--accent-color); text-decoration: none; margin: 0 0.5rem; font-size: 0.9rem; }
+
+        /* מפת אתר בפוטר */
+        .footer-nav { margin: 0 0 15px; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.3rem 0.8rem; }
+        .footer-nav a { color: var(--accent-color); text-decoration: none; font-size: 0.95rem; }
+        .footer-nav a:hover { text-decoration: underline; }
+        .footer-nav span { color: #555; }
 
         .lightbox {
             display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85);
@@ -84,13 +115,35 @@
             .hero { padding: 3rem 1rem; }
             .hero h1 { font-size: 1.8rem; }
             .gallery { grid-template-columns: 1fr; }
+
+            .logo-img { max-height: 54px; }
+            .nav-toggle { display: block; }
+            .site-nav {
+                display: none; position: absolute; top: 100%; right: 0; left: 0;
+                background: white; flex-direction: column; align-items: stretch; gap: 0;
+                box-shadow: 0 8px 16px rgba(0,0,0,0.08); padding: 0.4rem 0;
+            }
+            .site-nav.open { display: flex; }
+            .site-nav a { padding: 0.85rem 1.2rem; border-radius: 0; border-top: 1px solid #f0ece4; font-size: 1rem; }
+            .site-nav a.nav-graves { margin: 0.4rem 1.2rem 0.2rem; border-radius: 50px; text-align: center; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <a href="index.html"><img src="logo.png" alt="פריחת הברזל" class="logo-img" onerror="this.style.display='none'"></a>
+        <div class="header-inner">
+            <a href="index.html"><img src="logo.png" alt="פריחת הברזל" class="logo-img" onerror="this.style.display='none'"></a>
+            <button class="nav-toggle" onclick="toggleNav()" aria-label="פתיחת תפריט">☰</button>
+            <nav class="site-nav" id="site-nav">
+                <a href="index.html" class="nav-home">דף הבית</a>
+                <a href="index.html#configurator">סטודיו לעיצוב אישי</a>
+                <a href="index.html#story">הסיפור שלנו</a>
+                <a href="index.html#workshop">מהסדנה</a>
+                <a href="https://wa.me/972529217936" target="_blank">צרו קשר בווטסאפ</a>
+                <a href="graves.html" class="nav-graves">פרחי ברזל למצבות</a>
+            </nav>
+        </div>
     </header>
 
     <section class="hero">
@@ -146,7 +199,14 @@
     </section>
 
     <footer>
-        <p class="footer-nav"><a href="index.html">חזרה לדף הבית</a></p>
+        <nav class="footer-nav">
+            <a href="index.html">דף הבית</a><span>·</span>
+            <a href="index.html#configurator">סטודיו לעיצוב אישי</a><span>·</span>
+            <a href="index.html#story">הסיפור שלנו</a><span>·</span>
+            <a href="index.html#workshop">מהסדנה</a><span>·</span>
+            <a href="https://wa.me/972529217936" target="_blank">צרו קשר בווטסאפ</a><span>·</span>
+            <a href="graves.html">פרחי ברזל למצבות</a>
+        </nav>
         <p style="margin:0;">&copy; 2026 פריחת הברזל | Iron Bloom</p>
     </footer>
 
@@ -159,6 +219,9 @@
     </div>
 
     <script>
+        function toggleNav() {
+            document.getElementById('site-nav').classList.toggle('open');
+        }
         function openLightbox(src) {
             document.getElementById('lightbox-img').src = src;
             document.getElementById('lightbox').classList.add('open');
